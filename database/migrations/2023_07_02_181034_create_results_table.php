@@ -13,18 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-       Schema::create('results', function (Blueprint $table) {
-
+        Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('quiz_title');
-            $table->tinyInteger('content');
-            $table->integer('count');
             $table->timestamps();
-            $table->softDeletes();
-
-            $table->foreign('quiz_title')->references('title')->on('quizzes'); #外部キー挿入
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

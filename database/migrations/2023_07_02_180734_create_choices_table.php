@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
  return new class extends Migration
 {
     /**
@@ -16,13 +15,13 @@ use Illuminate\Support\Facades\Schema;
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->id();
-            $table->string('quiz_title');
+            $table->string('quiz_id');
             $table->text('content');
             $table->tinyInteger('answer');
             $table->timestamps();
             $table->softDeletes();
-            
-             $table->foreign('quiz_title')->references('title')->on('quizzes'); #外部キー挿入
+
+             $table->foreign('quiz_id')->references('id')->on('quizzes'); #外部キー挿入
         });
      }
      public function down()

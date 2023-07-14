@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class choices extends Model
+class Quiz_category extends Model
 {
     use HasFactory;
-    
-    public function quiz()
+    public function quizzes()   
 {
- return $this->belongsTo(quiz::class);
+ return $this->hasMany(quiz::class);  
 }
-
 }

@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
             Quiz_yearsSeeder::class,
             QuizzesSeeder::class,
             ChoicesSeeder::class,
-            
+            usersSeeder::class,
     ]);
-}
-
+    }
 }
