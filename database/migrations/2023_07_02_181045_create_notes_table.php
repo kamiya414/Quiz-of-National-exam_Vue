@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-       Schema::create('time_trackings', function (Blueprint $table) {
-           $table->id();
-           $table->unsignedBigInteger('user_id');
-           $table->time('start-end');
-           $table->timestamps();
-           $table->softDeletes();
-
-
-           $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('notes', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('time_trackings');
+        Schema::dropIfExists('notes');
     }
 };

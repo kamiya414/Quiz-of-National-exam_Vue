@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class time_trackings extends Model
+class Note extends Model
 {
     use HasFactory;
-    public function user()
+    public function quiz()
+{
+ return $this->belongsTo(quiz::class);
+}
+public function user()
 {
  return $this->belongsTo(User::class);
 }

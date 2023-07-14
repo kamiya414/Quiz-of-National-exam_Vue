@@ -4,6 +4,18 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\QuizYearController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ChoiceController;
+use App\Http\Controllers\QuizCategoryController;
+
+
+
+Route::get("/quizzes/option_years", [QuizYearController::class, "option_years"])->name('option_years');;
+Route::get("/quizzes/option_categories", [QuizCategoryController::class, "option_categories"])->name('option_categories');
+Route::get("/quizzes/quiz", [QuizController::class, "quizzes"])->name('quiz');
+Route::get("/quizzes/choice", [ChoiceController::class, "choices"]);
+
 
 /*
 |--------------------------------------------------------------------------

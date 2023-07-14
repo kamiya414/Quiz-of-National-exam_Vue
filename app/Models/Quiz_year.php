@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class quiz_years extends Model
+class Quiz_year extends Model
 {
     use HasFactory;
     public function quizzes()   

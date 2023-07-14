@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->unsignedBigInteger('quiz_year_id');
             $table->unsignedBigInteger('quiz_category_id');
-            $table->string('title',10)->primary(); 
+            $table->string('id',10)->primary();
             $table->text('content');
             $table->timestamps();
             $table->softDeletes();
