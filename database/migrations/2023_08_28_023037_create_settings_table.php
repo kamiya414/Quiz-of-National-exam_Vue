@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('quiz_year_id')->nullable();
             $table->integer('quiz_category_id')->nullable();
-            $table->set('range', ['all', 'perfect','weak','to_be_ans']);
+            $table->enum('range', ['all', 'perfect','weak','to_be_ans']);
             $table->integer('num_of_que');
-            $table->set('sort', ['asc', 'desc','random']);
+            $table->enum('sort', ['asc', 'desc','random']);
             $table->boolean('limit');
             $table->integer('time_limit')->default(60);
             $table->timestamps();

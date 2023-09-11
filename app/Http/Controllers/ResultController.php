@@ -31,11 +31,13 @@ class ResultController extends Controller
         #完璧65%以上のみ
         #苦手65%以下のみ
      
-       $perfect=[];
-       $weak=[];
-       $to_be_ans=[];
-       
-       $quizzes=Quiz::all();
+        $perfect=[];
+        $weak=[];
+        $to_be_ans=[];
+        $perfect_cnt=0;
+        $weak_cnt=0;
+        $to_be_ans_cnt=0;
+        $quizzes=Quiz::all();
         foreach($quizzes as $quiz){
 
             $result_correct=$result->where('quiz_id', $quiz->id)->where('content',1)->count();
@@ -66,7 +68,7 @@ class ResultController extends Controller
             }
      
         }
- 
+     
         #すべて
         $quiz_cnt=$quiz->count();
  

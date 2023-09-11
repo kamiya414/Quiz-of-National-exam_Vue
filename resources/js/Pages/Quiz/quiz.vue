@@ -108,7 +108,7 @@ onMounted( () => {
                             <div v-show="is_quiz">
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--<input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="checkbox"/>-->
-                                    <input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="hidden peer"  v-model="form.content"/>
+                                    <input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="hidden peer" @click="form.content=choice.answer"/>
                                     <!--<label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="btn bg-white block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm  hover:bg-cyan-100　 hover:shadow-base hover:translate-y-0.5 transform transition  ">-->
                                         <!--<input type="radio" :id="index+1" name="choice" v-model="choice.answer"  class="  "/>-->
                                     <label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="peer-checked:bg-[#CCFFFF] peer-checked:text-cyan-400 block mt-4 border border-white rounded-lg py-2 px-6 font-bold text-xl text-white shadow-sm hover:text-cyan-400  hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition ">
