@@ -13,9 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+       Schema::create('notes', function (Blueprint $table) {
+           $table->id();
+           $table->unsignedBigInteger('user_id');
+           $table->string('quiz_id');
+           $table->text('content');
+           $table->timestamps();
+           $table->softDeletes();
+
+           $table->foreign('quiz_id')->references('id')->on('quizzes'); #外部キー挿入
+           $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

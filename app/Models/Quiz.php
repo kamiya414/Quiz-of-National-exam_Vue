@@ -39,4 +39,7 @@ class Quiz extends Model
     {
        return $this->hasMany(explanation::class);  
     }
+
+   
 }
+
