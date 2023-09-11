@@ -4,7 +4,7 @@ import {createApp,onMounted,ref} from "vue"
 // const props = defineProps(['quizzes']);
 import axios from 'axios';
 import { useForm } from '@inertiajs/vue3';
-import Modal from "@/Components/Modal_test.vue";
+import Modal from "@/Components/Modal.1.vue";
 
 
 
@@ -63,55 +63,27 @@ function submit(quiz){
     form.post(route('result.store'))
 }
 
-onMounted( () => {
-  // 星を表示するための親要素を取得
-  const stars = document.querySelector(".stars");
-
-  // 星を生成する関数
-      const createStar = () => {
-        const starEl = document.createElement("span");
-        starEl.className = "star";
-        const minSize = 1; // 星の最小サイズを指定
-        const maxSize = 2; // 星の最大サイズを指定
-        const size = Math.random() * (maxSize - minSize) + minSize;
-        starEl.style.width = `${size}px`;
-        starEl.style.height = `${size}px`;
-        starEl.style.left = `${Math.random() * 100}%`;
-        starEl.style.top = `${Math.random() * 100}%`;
-        starEl.style.animationDelay = `${Math.random() * 10}s`;
-        stars.appendChild(starEl);
-      };
-
-      // for文で星を生成する関数を指定した回数呼び出す
-      for (let i = 0; i <= 500; i++) {
-        createStar();
-      }
-});
-
 
 </script>
 
 
 <template>
     <Authenticated>
-        <div class="stars bg-scroll ... w-full h-screen bg-clip-border" style="background-image:url('/img/background_img.jpg') ;background-repeat:no-repeat;background-size:cover">
+        <div class=" bg-scroll ... w-full h-screen bg-clip-border" style="background-image:url('/img/background_img.jpg') ;background-repeat:no-repeat;background-size:cover">
             <div class="w-full mx-auto  ">
-               
                 <div v-for="(quiz,quiz_index) in quizzes" :key="quiz.id" class="grid grid-cols-1 justify-items-center">
-                    
                     <form @submit.prevent="submit(quiz)">
-                        <div v-show="count===quiz_index" class='mt-20' >
-                            <h1 class="font-bold text-3xl text-white flex justify-center ...">問題</h1>
-                            <h2 class="font-bold text-xl text-white text-center ">{{quiz.id}} ) {{quiz.content}}</h2>
-                           
+                        <div v-show="count===quiz_index" >
+                            <h1 class="font-bold text-3xl text-gray-800 flex justify-center ...">問題</h1>
+                            <h2 class="font-bold text-xl text-black text-center ">{{quiz.id}} ) {{quiz.content}}</h2>
                             <!--問題画面-->
                             <div v-show="is_quiz">
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--<input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="checkbox"/>-->
-                                    <input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="hidden peer"  v-model="form.content"/>
+                                    <input type="radio" :id="String(quiz_index)+String(index+1)" :value='choice.answer' name="choice" class="hidden peer"  v-model="form.content"/>
                                     <!--<label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="btn bg-white block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm  hover:bg-cyan-100　 hover:shadow-base hover:translate-y-0.5 transform transition  ">-->
                                         <!--<input type="radio" :id="index+1" name="choice" v-model="choice.answer"  class="  "/>-->
-                                    <label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="peer-checked:bg-[#CCFFFF] peer-checked:text-cyan-400 block mt-4 border border-white rounded-lg py-2 px-6 font-bold text-xl text-white shadow-sm hover:text-cyan-400  hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition ">
+                                    <label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="peer-checked:bg-[#CCFFFF] block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm  hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition ">
                                           
                                             ({{index+1}}) {{choice.content}}
                                     </label>
@@ -120,7 +92,6 @@ onMounted( () => {
             
                             <!--解説画面-->
                             <div v-show="!is_quiz"> 
-                            
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--choice.answerが１「正解」の時青色に-->
                                     <div :for="index+1" v-if="choice.answer==1" class="relative flex">
@@ -148,21 +119,20 @@ onMounted( () => {
                                 </div>
                                 <div>
                                     <button @click="onOpen" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                        <p class="font-bold text-xl text-white  text-center ">メモ{{quiz.id}}</p>
+                                        <p class="font-bold text-xl text-white  text-center ">メモ</p>
                                     </button>
-                                     <Modal :show="isShow" :quiz_id="quizzes[count].id" @close="onClose" ></Modal>
-                                    <!--<Modal :show="isShow" :quiz_id="quiz_index"  @close="onClose" ></Modal>-->
+                                    <Modal :show="isShow" @close="onClose" >test</Modal>
                                 </div>
                                
                             </div>
                             <div class="flex justify-evenly">
-                                <button type="button" @click="subCount()" class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                <button type="button" @click="subCount()" class="bg-green-400　shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
                                     <p class="font-bold text-xl text-white  text-center ">戻る</p>
                                 </button>
-                                <button v-show="is_quiz" type="submit" :disabled="form.processing" @click="resultCorrect()" class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                <button v-show="is_quiz" type="submit" :disabled="form.processing" @click="resultCorrect()" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
                                     <p class="font-bold text-xl text-white  text-center ">解説へ</p>
                                 </button>
-                                <button v-show="!is_quiz" type="button" @click="addCount()"  class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                <button v-show="!is_quiz" type="button" @click="addCount()"  class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
                                     <p class="font-bold text-xl text-white  text-center ">次の問題へ</p>
                                 </button>
                             </div>
@@ -204,35 +174,5 @@ onMounted( () => {
 
     .checkbox:checked+.btn {
     	background: #CCFFFF ;
-    	
     }
-
-    
-    /* 星のスタイル */
-.star {
-  position: absolute;
-  display: block;
-  background-color: #fff; /* 星の色 */
-  border-radius: 50%;
-  box-shadow: 0 0 4px 2px rgba(#fff, 0.2); /* 星の影 */
-  opacity: 0;
-  animation: twinkle 3s infinite;
-}
-
-/* 星がキラキラ光るアニメーション */
-@keyframes twinkle {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
 </style>

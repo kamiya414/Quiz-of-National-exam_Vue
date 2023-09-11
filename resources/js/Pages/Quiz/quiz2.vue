@@ -4,7 +4,7 @@ import {createApp,onMounted,ref} from "vue"
 // const props = defineProps(['quizzes']);
 import axios from 'axios';
 import { useForm } from '@inertiajs/vue3';
-import Modal from "@/Components/Modal_test.vue";
+import Modal from "@/Components/Modal.1.vue";
 
 
 
@@ -33,9 +33,7 @@ const form = useForm({
     quiz_id:'35-11',
   })
   
-onMounted(()=>{
-    console.log(props.quizzes)
-})
+
 
 // 問題画面、解説画面切り替え
 const count=ref(0)
@@ -94,24 +92,21 @@ onMounted( () => {
 
 <template>
     <Authenticated>
-        <div class="stars bg-scroll ... w-full h-screen bg-clip-border" style="background-image:url('/img/background_img.jpg') ;background-repeat:no-repeat;background-size:cover">
+            <div class="stars">
             <div class="w-full mx-auto  ">
-               
                 <div v-for="(quiz,quiz_index) in quizzes" :key="quiz.id" class="grid grid-cols-1 justify-items-center">
-                    
                     <form @submit.prevent="submit(quiz)">
                         <div v-show="count===quiz_index" class='mt-20' >
                             <h1 class="font-bold text-3xl text-white flex justify-center ...">問題</h1>
                             <h2 class="font-bold text-xl text-white text-center ">{{quiz.id}} ) {{quiz.content}}</h2>
-                           
                             <!--問題画面-->
                             <div v-show="is_quiz">
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--<input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="checkbox"/>-->
-                                    <input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="hidden peer"  v-model="form.content"/>
+                                    <input type="radio" :id="String(quiz_index)+String(index+1)" :value='choice.answer' name="choice" class="hidden peer"  v-model="form.content"/>
                                     <!--<label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="btn bg-white block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm  hover:bg-cyan-100　 hover:shadow-base hover:translate-y-0.5 transform transition  ">-->
                                         <!--<input type="radio" :id="index+1" name="choice" v-model="choice.answer"  class="  "/>-->
-                                    <label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="peer-checked:bg-[#CCFFFF] peer-checked:text-cyan-400 block mt-4 border border-white rounded-lg py-2 px-6 font-bold text-xl text-white shadow-sm hover:text-cyan-400  hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition ">
+                                    <label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="peer-checked:bg-[#CCFFFF] peer-checked:text-cyan-400 block mt-4 border border-white rounded-lg py-2 px-6 font-bold text-xl text-white shadow-sm hover:text-cyan-400  hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition  ">
                                           
                                             ({{index+1}}) {{choice.content}}
                                     </label>
@@ -120,7 +115,6 @@ onMounted( () => {
             
                             <!--解説画面-->
                             <div v-show="!is_quiz"> 
-                            
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--choice.answerが１「正解」の時青色に-->
                                     <div :for="index+1" v-if="choice.answer==1" class="relative flex">
@@ -148,10 +142,9 @@ onMounted( () => {
                                 </div>
                                 <div>
                                     <button @click="onOpen" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                        <p class="font-bold text-xl text-white  text-center ">メモ{{quiz.id}}</p>
+                                        <p class="font-bold text-xl text-white  text-center ">メモ</p>
                                     </button>
-                                     <Modal :show="isShow" :quiz_id="quizzes[count].id" @close="onClose" ></Modal>
-                                    <!--<Modal :show="isShow" :quiz_id="quiz_index"  @close="onClose" ></Modal>-->
+                                    <Modal :show="isShow" @close="onClose" >test</Modal>
                                 </div>
                                
                             </div>
@@ -204,35 +197,41 @@ onMounted( () => {
 
     .checkbox:checked+.btn {
     	background: #CCFFFF ;
-    	
+    }
+    
+    .stars {
+      position: relative;
+      width: 100%; /* 星空の横幅 */
+      height: 100vh; /* 星空の縦幅 */
+      background-image: linear-gradient(0deg, #00dedc, #115d89, #080f1c); /* 星空の背景色 */
+      overflow: hidden; /* 星が枠外にはみ出すのを防ぐ */
     }
 
+/* 星のスタイル */
+    .star {
+      position: absolute;
+      display: block;
+      background-color: #fff; /* 星��色 */
+      border-radius: 50%;
+      box-shadow: 0 0 4px 2px rgba(#fff, 0.2); /* 星の影 */
+      opacity: 0;
+      animation: twinkle 5s infinite;
+    }
     
-    /* 星のスタイル */
-.star {
-  position: absolute;
-  display: block;
-  background-color: #fff; /* 星の色 */
-  border-radius: 50%;
-  box-shadow: 0 0 4px 2px rgba(#fff, 0.2); /* 星の影 */
-  opacity: 0;
-  animation: twinkle 3s infinite;
-}
-
-/* 星がキラキラ光るアニメーション */
-@keyframes twinkle {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
+    /* 星がキラキラ光るアニメーション */
+    @keyframes twinkle {
+      0% {
+        opacity: 0;
+      }
+    
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+    }
 </style>

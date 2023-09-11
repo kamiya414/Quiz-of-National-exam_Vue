@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             QuizzesSeeder::class,
             ChoicesSeeder::class,
             usersSeeder::class,
+            SettingSeeder::class,
     ]);
     }
 }

@@ -6,7 +6,10 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB; #追記
 use DateTime; #追記
+use Illuminate\Support\Facades\Hash;
+
 class usersSeeder extends Seeder
+
 {
     /**
      * Run the database seeds.
@@ -20,7 +23,14 @@ class usersSeeder extends Seeder
             
             'name'=>'abc',
             'email'=>'fdpanfpeq@gmail.com',
-            'password'=>'qwer1234',
+            'password'=> Hash::make('qwer1234'),
+            ]);
+            
+        DB::table('users')->insert([
+        
+            'name'=>'def',
+            'email'=>'degds789@gmail.com',
+            'password'=> Hash::make('1234qwer'),
             ]);
     }
 }

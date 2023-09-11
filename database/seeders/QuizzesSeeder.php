@@ -427,7 +427,7 @@ class QuizzesSeeder extends Seeder
                 'quiz_year_id' => 11,
                 'quiz_category_id' => 3,
                 'id' =>'35-62',
-                'content' => '畜肉の加工および加工品に関する記述である。最も適当なのはどれか。 1 つ選べ。',
+                'content' => '畜肉の加工および加工品に関する記述である。最も適当なのはどれか。 1 つ選べ�����',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'deleted_at' => Null,

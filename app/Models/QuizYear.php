@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Time_tracking extends Model
+class QuizYear extends Model
 {
     use HasFactory;
-    public function user()
+    public function quizzes()   
 {
- return $this->belongsTo(User::class);
+ return $this->hasMany(quiz::class);  
 }
+
 }

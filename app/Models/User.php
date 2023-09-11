@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
+
     protected $fillable = [
         'name',
         'email',
@@ -43,23 +45,27 @@ class User extends Authenticatable
     ];
     
     public function results()   
-{
- return $this->hasMany(result::class);  
-}
-
-public function notes()   
-{
- return $this->hasMany(note::class);  
-}
-
-public function explanations()   
-{
- return $this->hasMany(explanation::class);  
-}
-
-public function time_trackings()   
-{
- return $this->hasMany(time_tracking::class);  
-}
-
-}
+    {
+     return $this->hasMany(result::class);  
+    }
+    
+    public function notes()   
+    {
+     return $this->hasMany(note::class);  
+    }
+    
+    public function explanations()   
+    {
+     return $this->hasMany(explanation::class);  
+    }
+    
+    public function time_trackings()   
+    {
+     return $this->hasMany(time_tracking::class);  
+    }
+    public function settings()   
+    {
+     return $this->hasMany(settings::class);  
+    }
+    
+    }

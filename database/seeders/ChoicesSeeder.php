@@ -211,7 +211,7 @@ class ChoicesSeeder extends Seeder
                 DB::table('choices')->insert([
                 'quiz_id' => '36-21',
                 'content' => 'LDL は、HDL から生成される。',
-                'answer' =>1,
+                'answer' =>0,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'deleted_at' => Null,

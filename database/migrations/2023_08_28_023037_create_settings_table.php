@@ -13,17 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-       Schema::create('results', function (Blueprint $table) {
-
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('quiz_id');
-            $table->tinyInteger('content');
-            // $table->integer('count'); DB内でuser_idとquiz_idが共通なものをcount
+            $table->integer('quiz_year_id')->nullable();
+            $table->integer('quiz_category_id')->nullable();
+            $table->set('range', ['all', 'perfect','weak','to_be_ans']);
+            $table->integer('num_of_que');
+            $table->set('sort', ['asc', 'desc','random']);
+            $table->boolean('limit');
+            $table->integer('time_limit')->default(60);
             $table->timestamps();
-            $table->softDeletes();
-
-            $table->foreign('quiz_id')->references('id')->on('quizzes'); #外部キー挿入
+            
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('settings');
     }
 };
