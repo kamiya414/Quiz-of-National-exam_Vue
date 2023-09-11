@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build", 
+        "heroku-postbuild": "npm run build"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
