@@ -27,5 +27,9 @@
         "vue-chartjs": "^5.2.0",
         "vue3-summernote-editor": "^1.0.2",
         "vuex": "^4.1.0"
-    }
+    },
+    "engines": {
+        "node": "16.x",
+        "npm": "9.x"
+    },
 }
