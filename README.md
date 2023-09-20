@@ -43,6 +43,4 @@
 - ホーム画面追加（参考:https://www.iscle.com/web-it/add-home-icon.html）
 
 
-## 課題・将来性
-
 
