@@ -4,7 +4,10 @@
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=kamiya414&margin-w=5)](https://github.com/kamiya414/Quiz-of-National-exam_Vue/master/)
 
-
+<p align="left"> 
+  <img alt="Top Langs" height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=kamiya414&layout=compact&show_icons=true&theme=onedark" />
+  <img alt="github stats" height="150px" src="https://github-readme-stats.vercel.app/api?username=kamiya414&theme=onedark&show_icons=ture" />
+</p>
 <div>
     <h1>
         <a href="https://examedge-e4be09930920.herokuapp.com/">【アプリケーション】</a>
