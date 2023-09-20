@@ -7,14 +7,18 @@
 
 <div>
     <h1>
-        <a href="https://examedge-e4be09930920.herokuapp.com/">アプリケーション</a>
+        <a href="https://examedge-e4be09930920.herokuapp.com/">【アプリケーション】</a>
     </h1>
-    <h2>仮ログイン用</h2>
-<h3>ユーザー１</h3>
-　<p>Email:fdpanfpeq@gmail.com</p>
-  <p>pw:qwer1234</p>
-<h3>ユーザー２</h3>
-  <p>Email:eihafeiage@gmail.com</p>
-  <p>pw:123456789</p>
+    <h2>☆仮ログイン用</h2>
+    <h3>ユーザー１</h3>
+　  <p>・Email : fdpanfpeq@gmail.com</p>
+    <p>・pw : qwer1234</p>
+    <h3>ユーザー２</h3>
+      <p>・Email : eihafeiage@gmail.com</p>
+      <p>・pw : 123456789</p>
+    <h2>
+        <a href="https://drive.google.com/file/d/1IPEXk55xuc1WPxT01dDXph0tThqOHQLh/view?usp=sharing">ER図＆ワイヤーフレーム</a>
+    </h2>
+
 </div>
 
