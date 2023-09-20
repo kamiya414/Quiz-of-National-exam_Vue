@@ -47,28 +47,33 @@ class ResultController extends Controller
                 $result_rate=round($result_rate,1);
             }
             else{
-                $result_rate=0;
+         
+                $result_rate=-1;
+            }
+             if($result_rate===-1){
+                 #未学習
+                array_push($to_be_ans,$quiz);
+                $to_be_ans_cnt=count($to_be_ans);
             }
             
-            if($result_rate>=65){
+            elseif($result_rate>=65){
                 #完璧
                 array_push($perfect,$quiz);
                 $perfect_cnt=count($perfect);
            
             }
-            elseif($result_rate<65 && $result_rate!=0){
+            else{
                 #苦手
                 array_push($weak,$quiz);
                 $weak_cnt=count($weak);
             }
-            else{
-                 #未学習
-                array_push($to_be_ans,$quiz);
-                $to_be_ans_cnt=count($to_be_ans);
-            }
+
      
         }
-     
+        // #未学習
+        // $to_be_ans=$quiz->doesntHave('results')->get();
+        // $to_be_ans_cnt=$to_be_ans->count(); 
+        
         #すべて
         $quiz_cnt=$quiz->count();
  

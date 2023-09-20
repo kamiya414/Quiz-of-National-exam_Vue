@@ -70,7 +70,7 @@ onMounted( () => {
                     <div class="grid grid-cols-3 justify-items-center "> 
                         <div v-for="quiz_year in quiz_years">
                              <Link :href="route('year_to_setting',{quiz_year:quiz_year.id})" type="button" class="rounded-full w-60 h-30 bg-gradient-to-r from-pink-500 to-yellow-500 shadow-lg rounded px-2 py-1 my-4 hover:from-green-400 hover:to-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition ">
-                                <h2 class="font-bold text-3xl text-white  text-center p-4">{{quiz_year.name}}</h2>
+                                <h2 class="font-bold text-2xl text-white  text-center p-4">{{quiz_year.name}}</h2>
                             </Link>
                         </div>
                     </div>
@@ -86,8 +86,8 @@ onMounted( () => {
                     </div>
                     <div class="grid grid-cols-3 justify-items-center  "> 
                         <div v-for="quiz_category in quiz_categories">
-                            <Link :href="route('category_to_setting',{quiz_category:quiz_category.id})"  type="button" class=" rounded-full w-72 h-30 bg-gradient-to-r from-green-400 to-blue-500 shadow-lg rounded px-2 py-1 my-4 hover:from-pink-500 hover:to-yellow-500 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                <h2 class="font-bold  text-3xl text-white  text-center p-4 truncate ">{{quiz_category.name}}</h2>
+                            <Link :href="route('category_to_setting',{quiz_category:quiz_category.id})"  type="button" class=" rounded-full w-60 h-30 bg-gradient-to-r from-green-400 to-blue-500 shadow-lg rounded px-2 py-1 my-4 hover:from-pink-500 hover:to-yellow-500 hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                <h2 class="font-bold  text-2xl text-white  text-center p-4 truncate ">{{quiz_category.name}}</h2>
                             </Link>
                         </div>
                     </div>

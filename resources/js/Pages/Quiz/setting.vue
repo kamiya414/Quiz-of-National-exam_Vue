@@ -64,8 +64,8 @@ function submit(quiz){
 </script>
 <template>
     <Authenticated>
-        <div class="stars bg-scroll ... w-full h-screen bg-clip-border" style="background-image:url('/img/background_img.jpg') ;background-repeat:no-repeat;background-size:cover">
-            <div class="w-3/4 mx-auto mt-8">
+        <div class="bg-scroll w-full h-full bg-no-repeat bg-center bg-cover" style="background-image:url('/img/background_img.jpg') ">
+            <div class="w-3/4 mx-auto pt-8">
                 <h1 class="font-bold text-3xl text-gray-800 flex justify-center ... " v-if="quiz_year">{{quiz_year.name}}</h1>
             
                 <div class="wrapper mt-4 flex justify-center">
@@ -118,6 +118,15 @@ function submit(quiz){
                             ランダム
                             </label>
                     </div>
+                    <div class="w-3/4 mx-auto mt-8 flex justify-evenly">
+                        <Link :href="route('option')" type="button"  class=" bg-green-400　shadow-m rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
+                            <p class="font-bold text-xl text-white  text-center ">戻る</p>
+                        </Link>
+                        <!--確定でform内容を送信。<button> が <form> の中にある場合、そのボタンは "submit" ボタンとして扱われる。-->
+                        <button type="submit" :disabled="form.processing" class=" bg-orange-400　shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition " >
+                            <p class="font-bold text-xl text-white  text-center">確定</p>
+                        </button>
+                    </div>
                     <p class="mx-auto mt-4 flex justify-center">【時間制限】
                         <div class="text-red-700" v-if="form.errors.limit">選択してください</div>
                     </p>
@@ -135,15 +144,7 @@ function submit(quiz){
                             <p class="mt-4">秒</p>
                         </div>
                     </div>
-                    <div class="w-3/4 mx-auto mt-8 flex justify-evenly">
-                        <Link :href="route('option')" type="button"  class=" bg-green-400　shadow-m rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                            <p class="font-bold text-xl text-white  text-center ">戻る</p>
-                        </Link>
-                        <!--確定でform内容を送信。<button> が <form> の中にある場合、そのボタンは "submit" ボタンとして扱われる。-->
-                        <button type="submit" :disabled="form.processing" class=" bg-orange-400　shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition " >
-                            <p class="font-bold text-xl text-white  text-center">確定</p>
-                        </button>
-                    </div>
+
                 </form>
             </div>
         </div>
