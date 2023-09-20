@@ -1,10 +1,11 @@
-<div>仮ログイン用
-ユーザー１
-　Email:fdpanfpeq@gmail.com
-  pw:qwer1234
-ユーザー２
-  Email:eihafeiage@gmail.com
-  pw:123456789
+<div>
+    <h1>仮ログイン用</h1>
+<h2>ユーザー１</h2>
+　<p>Email:fdpanfpeq@gmail.com</p>
+  <p>pw:qwer1234</p>
+<h2>ユーザー２</h2>
+  <p>Email:eihafeiage@gmail.com</p>
+  <p>pw:123456789</p>
 </div>
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
