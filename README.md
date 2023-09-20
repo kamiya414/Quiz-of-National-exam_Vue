@@ -1,3 +1,7 @@
+### 🌱 my skills
+ <img src="https://skillicons.dev/icons?i=aws,vue,css,discord,git,github,heroku,html,js,laravel,mysql,php,tailwind,wordpress,flutter&perline=5" />
+
+
 <div>
     <h1>仮ログイン用</h1>
 <h2>ユーザー１</h2>
@@ -7,7 +11,17 @@
   <p>Email:eihafeiage@gmail.com</p>
   <p>pw:123456789</p>
 </div>
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
+## 📈 Status
+[![Followers](https://badgen.org/img/zenn/rabbit/followers?style=flat)](https://zenn.dev/rabbit)
+
+<p align="left"> 
+  <img alt="Top Langs" height="150px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=tsuki-lab&layout=compact&show_icons=true" />
+  <img alt="github stats" height="150px" src="https://github-readme-stats.vercel.app/api?username=tsuki-lab" />
+</p>
+
+
+
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
