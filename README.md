@@ -19,7 +19,7 @@
     - Email:  fdpanfpeq@gmail.com
     - Password: qwer1234
 
-## 機能(参考：duolingo,quizizz:https://quizizz.com/join,)
+## 機能
 
 ### 実装済み
 - ユーザー登録
