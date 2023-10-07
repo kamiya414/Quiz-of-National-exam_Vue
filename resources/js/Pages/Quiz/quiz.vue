@@ -4,7 +4,7 @@ import {createApp,onMounted,ref} from "vue"
 // const props = defineProps(['quizzes']);
 import axios from 'axios';
 import { useForm } from '@inertiajs/vue3';
-import Modal from "@/Components/Modal_test.vue";
+import Modal from "@/Components/Modal_note.vue";
 
 
 
@@ -117,7 +117,6 @@ onMounted( () => {
                                     </label>
                                 </div>
                             </div>
-            
                             <!--解説画面-->
                             <div v-show="!is_quiz"> 
                             
@@ -146,14 +145,6 @@ onMounted( () => {
                                         </label>
                                     </div>
                                 </div>
-                                <div>
-                                    <button @click="onOpen" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                        <p class="font-bold text-xl text-white  text-center ">メモ{{quiz.id}}</p>
-                                    </button>
-                                     <Modal :show="isShow" :quiz_id="quizzes[count].id" @close="onClose" ></Modal>
-                                    <!--<Modal :show="isShow" :quiz_id="quiz_index"  @close="onClose" ></Modal>-->
-                                </div>
-                               
                             </div>
                             <div class="flex justify-evenly">
                                 <button type="button" @click="subCount()" class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
@@ -165,10 +156,16 @@ onMounted( () => {
                                 <button v-show="!is_quiz" type="button" @click="addCount()"  class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
                                     <p class="font-bold text-xl text-white  text-center ">次の問題へ</p>
                                 </button>
+                                <!--modal メモ表示-->
+                                    <button v-show="!is_quiz" @click="onOpen" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                        <p class="font-bold text-xl text-white  text-center ">メモ{{quiz.id}}</p>
+                                        <Modal :show="isShow" :quiz_id="quizzes[count].id" @close="onClose" ></Modal>
+                                    </button>
+    
                             </div>
                         </div>
+                        
                     </form>
-                   
                 </div>
                 <div v-show="count===num_of_que" >
                     <h1 class="font-bold text-3xl text-gray-800 flex justify-center ...">結果</h1>

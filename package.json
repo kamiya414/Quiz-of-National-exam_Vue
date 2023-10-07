@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build", 
+        "build": "vite build",
         "heroku-postbuild": "npm run build"
     },
     "devDependencies": {
@@ -24,6 +24,7 @@
         "@vueup/vue-quill": "^1.2.0",
         "chart.js": "^3.1.0",
         "vue-chart-3": "^3.1.8",
+        "vue-final-modal": "^3.4.11",
         "vue3-summernote-editor": "^1.0.2",
         "vuex": "^4.1.0"
     },

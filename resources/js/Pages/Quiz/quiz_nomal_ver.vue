@@ -4,7 +4,7 @@ import {createApp,onMounted,ref} from "vue"
 // const props = defineProps(['quizzes']);
 import axios from 'axios';
 import { useForm } from '@inertiajs/vue3';
-import Modal from "@/Components/Modal.1.vue";
+// import Modal from "@/Components/Modal.1.vue";
 
 
 
