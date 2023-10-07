@@ -2,7 +2,7 @@
 import Authenticated from '@/Layouts/AuthenticatedLayout.vue';
 import {createApp,onMounted,ref} from "vue";
 import { Link } from '@inertiajs/vue3';
-import Modal from "@/Components/Modal_test.vue";
+import Modal from "@/Components/Modal_note.vue";
 import { Chart, ChartData, registerables } from "chart.js";
 import { PieChart, LineChart } from "vue-chart-3";
   
