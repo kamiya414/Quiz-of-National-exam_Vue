@@ -5,6 +5,7 @@ import {createApp,onMounted,ref} from "vue"
 import axios from 'axios';
 import { useForm } from '@inertiajs/vue3';
 import Modal from "@/Components/Modal_note.vue";
+import { ModalsContainer} from 'vue-final-modal'
 
 
 
@@ -28,6 +29,8 @@ const props = defineProps({
         correct_rate: Array,
   });
   
+
+  
 const form = useForm({
     content:'-1',
     quiz_id:'35-11',
@@ -41,22 +44,23 @@ onMounted(()=>{
 const count=ref(0)
 function addCount(){
     count.value++,
-    is_quiz.value=!is_quiz.value
+    Type.value=0
 }
+
 
 function resultCorrect(){
-    is_quiz.value=!is_quiz.value
+    Type.value=1
+}
+function final(){
+    Type.value=2
 }
 
+const is_final=ref(false)
 
-// 後で削除、戻るボタン
-function subCount(){
-    count.value--
-    }
 
 const is_selected=ref(-1)
 
-const is_quiz=ref(true)
+const Type=ref(0)
 
 function submit(quiz){
     form.quiz_id=quiz.id
@@ -96,29 +100,28 @@ onMounted( () => {
     <Authenticated>
         <div class="stars bg-scroll ... w-full h-screen bg-clip-border" style="background-image:url('/img/background_img.jpg') ;background-repeat:no-repeat;background-size:cover">
             <div class="w-full mx-auto  ">
-               
                 <div v-for="(quiz,quiz_index) in quizzes" :key="quiz.id" class="grid grid-cols-1 justify-items-center">
                     
                     <form @submit.prevent="submit(quiz)">
                         <div v-show="count===quiz_index" class='mt-20' >
-                            <h1 class="font-bold text-3xl text-white flex justify-center ...">問題</h1>
-                            <h2 class="font-bold text-xl text-white text-center ">{{quiz.id}} ) {{quiz.content}}</h2>
-                           
+                            <div v-show="Type === 0 || Type===1">
+                                <h1 class="font-bold text-3xl text-white flex justify-center ...">問題</h1>
+                                <h2 class="font-bold text-xl text-white text-center ">{{quiz.id}} ) {{quiz.content}}</h2>
+                            </div>
                             <!--問題画面-->
-                            <div v-show="is_quiz">
+                            <div v-show="Type === 0">
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--<input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="checkbox"/>-->
                                     <input type="radio" :id="String(quiz_index)+String(index+1)" name="choice" class="hidden peer" @click="form.content=choice.answer"/>
                                     <!--<label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="btn bg-white block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm  hover:bg-cyan-100　 hover:shadow-base hover:translate-y-0.5 transform transition  ">-->
                                         <!--<input type="radio" :id="index+1" name="choice" v-model="choice.answer"  class="  "/>-->
                                     <label :for="String(quiz_index)+String(index+1)" @click="is_selected=index" class ="peer-checked:bg-[#CCFFFF] peer-checked:text-cyan-400 block mt-4 border border-white rounded-lg py-2 px-6 font-bold text-xl text-white shadow-sm hover:text-cyan-400  hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition ">
-                                          
                                             ({{index+1}}) {{choice.content}}
                                     </label>
                                 </div>
                             </div>
                             <!--解説画面-->
-                            <div v-show="!is_quiz"> 
+                            <div v-show="Type === 1"> 
                             
                                 <div v-for="(choice,index) in quiz.choices">
                                     <!--choice.answerが１「正解」の時青色に-->
@@ -146,40 +149,71 @@ onMounted( () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-evenly">
-                                <button type="button" @click="subCount()" class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                    <p class="font-bold text-xl text-white  text-center ">戻る</p>
-                                </button>
-                                <button v-show="is_quiz" type="submit" :disabled="form.processing" @click="resultCorrect()" class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
+                            <div class="flex justify-center">
+                                <button v-show="Type === 0" type="submit" :disabled="form.processing" @click="resultCorrect()" class="bg-green-400　shadow-m rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
                                     <p class="font-bold text-xl text-white  text-center ">解説へ</p>
                                 </button>
-                                <button v-show="!is_quiz" type="button" @click="addCount()"  class="rounded px-2 py-1 my-4  border-b-2 border-white rounded-lg py-2 px-6 text-lg text-white hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                    <p class="font-bold text-xl text-white  text-center ">次の問題へ</p>
-                                </button>
-                                <!--modal メモ表示-->
-                                    <button v-show="!is_quiz" @click="onOpen" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                                        <p class="font-bold text-xl text-white  text-center ">メモ{{quiz.id}}</p>
-                                        <Modal :show="isShow" :quiz_id="quizzes[count].id" @close="onClose" ></Modal>
+                                <div v-show="count+1 < num_of_que">
+                                    <button v-show="Type === 1" type="button" @click="addCount()"  class="bg-green-400　shadow-m rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                        <p class="font-bold text-xl text-white  text-center ">次の問題へ</p>
                                     </button>
-    
+                                </div>
+                                <div v-show="count+1 === num_of_que">
+                                    <button v-show="Type === 1" type="button" @click="final()" class="bg-green-400　shadow-m rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                        <p class="font-bold text-xl text-white  text-center ">終了</p>
+                                    </button>
+                                 </div>
                             </div>
+                            <!--modal メモ表示-->
+                            <button v-show="Type === 1" type="button" @click="onOpen" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
+                                <p class="font-bold text-xl text-white  text-center ">メモ{{quiz.id}}</p>
+                                <Modal :show="isShow" :quiz_id="quizzes[count].id" @close="onClose" ></Modal>
+                            </button>
                         </div>
-                        
                     </form>
                 </div>
-                <div v-show="count===num_of_que" >
-                    <h1 class="font-bold text-3xl text-gray-800 flex justify-center ...">結果</h1>
-                    <p>正解{{correct}}</p>
-                    <p>全問{{total}}</p>
-                    <p>正答率{{correct_rate}}%</p>
-                    <div class="flex justify-evenly">
-                        <button type="button" class="bg-green-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
-                            <p class="font-bold text-xl text-white text-center">戻る</p>
-                        </button>
+                <div v-show="Type === 2" >
+                    <h1 class="font-bold text-3xl text-white flex justify-center ">結果</h1>
+                    <div class="w-1/3 mx-auto grid grid-cols-2 block mt-4 border-4　border border-gray-300 rounded-full py-2 px-6 text-center">
+                        <div class="text-white block mt-4 font-bold text-2xl">正解{{correct}}問/全{{total}}問中 </div>
+                        <div class="text-white block mt-4 font-bold text-2xl">正答率{{correct_rate}}%</div>
+                    </div>
+                    <div class="flex justify-center ">
                         <a :href="route('option')" type="button" class="bg-orange-400 shadow-lg rounded px-2 py-1 my-4 hover:bg-orange-700 hover:shadow-sm hover:translate-y-0.5 transform transition">
                             <p class="font-bold text-xl text-white text-center">問題選択へ</p>
                         </a>
                     </div>
+                    <div style="height:450px;overflow:auto;" class="grid grid-cols-2 justify-items-center">
+                        <div v-for="(quiz,quiz_index) in quizzes" :key="quiz.id" class="grid grid-cols-1 justify-items-center">
+                            <h1 class="font-bold text-2xl text-white flex justify-center ...">問題</h1>
+                            <h2 class="font-bold text-lg text-white text-center ">{{quiz.id}} ) {{quiz.content}}</h2>
+                            <div v-for="(choice,index) in quiz.choices">
+                                <!--choice.answerが１「正解」の時青色に-->
+                                <div :for="index+1" v-if="choice.answer==1" class="relative flex">
+                                    <div class="flex-none mt-1 font-bold text-5xl text-blue-300 ">o</div>
+                                    <div  class =" flex-auto block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-base bg-blue-300 shadow-lg">
+                                        ({{index+1}}) {{choice.content}}
+                                    </div> 
+                                </div>
+                                
+                                <!--choice.answerが０「不正解」かつこのラベルが選択されている時赤色に-->
+                                <div :for="index+1" v-else-if="choice.answer==0 && is_selected===index" class="flex">
+                                    <div class="flex-none mt-1 font-bold text-5xl text-red-300 ">×</div>
+                                    <label  class ="flex-auto block mt-4 border border-gray-300  rounded-lg  py-2 px-6 text-base bg-red-300 shadow-lg">
+                                        ({{index+1}}) {{choice.content}}
+                                    </label>
+                                    
+                                </div>
+                                <!--choice.answerが０「不正解」かつ選択されていないときは透明-->
+                                <div :for="index+1" v-else class="flex">
+                                    <div class="flex-none font-bold text-5xl text-red-300">&nbsp;&nbsp;&nbsp;</div>
+                                    <label  class ="flex-auto block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-base">
+                                        ({{index+1}}) {{choice.content}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>   
+                    </div> 
                 </div>
             </div>
         </div>

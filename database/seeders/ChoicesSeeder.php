@@ -930,7 +930,7 @@ class ChoicesSeeder extends Seeder
          ]);
                  DB::table('choices')->insert([
                 'quiz_id' => '36-39',
-                'content' => '急性白血病では、出血傾向がみられる。',
+                'content' => '成人 T 細胞白血病は、ヒト免疫不全ウイルス（HIV）によって起こる。',
                 'answer' =>0,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
