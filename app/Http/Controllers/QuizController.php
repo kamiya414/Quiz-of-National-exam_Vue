@@ -15,7 +15,7 @@ class QuizController extends Controller
 {
     //
     
-    public function quizzes(Quiz $quiz,Result $result)  #(quiz_year用)
+    public function quizzes(Quiz $quiz,Result $result )  #(quiz_year用)
     {
         
         #正答率
@@ -35,7 +35,7 @@ class QuizController extends Controller
         if($setting->sort=="random"){
             return inertia("Quiz/quiz",[
                 // "quizzes" => $quiz::with("choices")->inRandomOrder()->take($setting->num_of_que)->get(),
-                "quizzes" => $quiz::with("choices")->where('quiz_year_id',$setting->quiz_year_id)->inRandomOrder()->take($setting->num_of_que)->get(),
+                "quizzes" => $quiz::with("choices")->where('quiz_year_id',$setting->quiz_year_id)->inRandomOrder($setting->num_of_que)->take($setting->num_of_que)->get(),
                 "num_of_que"=>$setting->num_of_que,
                 "total" =>$total,"correct" =>$correct,
                 "correct_rate" =>$correct_rate
@@ -45,7 +45,7 @@ class QuizController extends Controller
         else if($setting->sort=="asc"){
             return inertia("Quiz/quiz",[
                 // "quizzes" => $quiz::with("choices")->orderBy('id','asc')->take($setting->num_of_que)->get(),
-                 "quizzes" => $quiz::with("choices")->where('quiz_year_id',$setting->quiz_year_id)->orderBy('id','asc')->take($setting->num_of_que)->get(),
+                "quizzes" => $quiz::with("choices")->where('quiz_year_id',$setting->quiz_year_id)->orderBy('id','asc')->take($setting->num_of_que)->get(),
                 "num_of_que"=>$setting->num_of_que,
                 "total" =>$total,"correct" =>$correct,
                 "correct_rate" =>$correct_rate
@@ -54,7 +54,7 @@ class QuizController extends Controller
         else{
             return inertia("Quiz/quiz",[
                 // "quizzes" => $quiz::with("choices")->orderBy('id','desc')->take($setting->num_of_que)->get(),
-                 "quizzes" => $quiz::with("choices")->where('quiz_year_id',$setting->quiz_year_id)->orderBy('id','desc')->take($setting->num_of_que)->get(),
+                "quizzes" => $quiz::with("choices")->where('quiz_year_id',$setting->quiz_year_id)->orderBy('id','desc')->take($setting->num_of_que)->get(),
                 "num_of_que"=>$setting->num_of_que,
                 "total" =>$total,"correct" =>$correct,
                 "correct_rate" =>$correct_rate

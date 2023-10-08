@@ -78,19 +78,19 @@ function submit(quiz){
                     </p>
                     <div class="w-2/4 mx-auto flex justify-evenly">
                         <input type="radio" name="all" value="all" id="btn01" class="checkbox" v-model="form.range">
-                            <label for="btn01" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn01" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                                 すべて
                             </label>
                         <input type="radio" name="perfect" value="perfect" id="btn02" class="checkbox" v-model="form.range" >
-                            <label for="btn02" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn02" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                                 完璧
                             </label>
                         <input type="radio" name="weak" value="weak" id="btn03" class="checkbox" v-model="form.range">
-                            <label for="btn03" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn03" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                                 苦手
                             </label>
                         <input type="radio" name="to_be_ans" value="to_be_ans" id="btn04" class="checkbox" v-model="form.range">
-                            <label for="btn04" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn04" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                                 未学習
                             </label>
                     </div>
@@ -106,15 +106,15 @@ function submit(quiz){
                     </p>
                     <div class="w-2/4 mx-auto  flex justify-evenly">
                         <input type="radio" name="asc" value="asc" id="btn05" class="checkbox" v-model="form.sort">
-                            <label for="btn05" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn05" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                             昇順
                             </label>
                         <input type="radio" name="desc" value="desc" id="btn06" class="checkbox" v-model="form.sort">
-                            <label for="btn06" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn06" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                             降順
                             </label>
                         <input type="radio" name="random" value="random" id="btn07" class="checkbox" v-model="form.sort">
-                            <label for="btn07" class="btn text-white block mt-4 font-bold text-xl border border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn07" class="btn text-white block mt-4 font-bold text-xl border-2 border-white rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:text-cyan-400 hover:shadow-base hover:translate-y-0.5 transform transition">
                             ランダム
                             </label>
                     </div>
@@ -132,11 +132,11 @@ function submit(quiz){
                     </p>
                     <div class="w-2/4 mx-auto flex justify-evenly">
                         <input type="radio" name="false" value="false"  id="btn08" class="checkbox" v-model="form.limit">
-                            <label for="btn08" class="btn bg-white  block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn08" class="btn bg-white  block mt-4 border-2 border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition">
                             なし
                             </label>
                         <input type="radio" name="true" value="true" id="btn09" class="checkbox" v-model="form.limit">
-                            <label for="btn09" class="btn bg-white  block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition">
+                            <label for="btn09" class="btn bg-white  block mt-4 border-2 border-gray-300 rounded-lg py-2 px-6 text-lg shadow-sm rounded px-2 py-1 my-4 hover:bg-cyan-100 hover:shadow-base hover:translate-y-0.5 transform transition">
                             あり
                             </label>
                         <div class="mt-4 flex space-x-2 ...">
