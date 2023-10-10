@@ -42,7 +42,8 @@
 - ポイント・ランク機能
 - ホーム画面追加（参考:https://www.iscle.com/web-it/add-home-icon.html）
 
-##デモ動画
+##　デモ動画
+
 https://drive.google.com/file/d/1977oAyGhIV3QxgMUcVIy7UguA82ppiPt/view?usp=gmail
 
 
