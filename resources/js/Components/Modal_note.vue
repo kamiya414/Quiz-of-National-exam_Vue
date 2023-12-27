@@ -87,9 +87,11 @@ const form = useForm({
                     <!--modal内部-->
                     <div v-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto" :class="maxWidthClass">
                         <button type="button" class="text-5xl flex justify-end" @click="close">&times</button>
+                        <button>編集</button>
+                        <button>保存</button>
                         <form @submit.prevent="form.post(route('note.store'))">
                             <div id="app" class="w-full h-[400px]"><!-- リッチテキストエディタ-->
-                              <quill-editor theme="snow" toolbar="full" v-model:content="form.content" contentType="text"></quill-editor>
+                              <quill-editor theme="snow" toolbar="full" v-model:content="form.content" contentType="html"></quill-editor>
                             </div>
         
                             <button type="submit" class="rounded px-2 py-1 my-4  border-b-2 border-black rounded-lg py-2 px-6 text-lg text-black hover:shadow-sm hover:translate-y-0.5 transform transition">
