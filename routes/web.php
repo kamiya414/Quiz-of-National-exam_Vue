@@ -9,8 +9,10 @@ use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\Auth\LoginController;
 
-
+Route::get('login/google', [LoginController::class, 'redirectToGoogle']); // 追記
+Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']); // 追記
 
 Route::get("/quizzes/options", [OptionController::class,"option"])->name('option');
 Route::get("/quizzes/quiz/", [QuizController::class, "quizzes"])->name('quiz');#年度別経由
